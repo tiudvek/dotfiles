@@ -1,0 +1,27 @@
+* {
+	border: none;
+	border-radius: 0px;
+	font-family: monospace;
+	font-size: 15px;
+	font-style: normal;
+	min-height: 0;
+	background: #0b0f10;
+}
+
+window#waybar {
+	background: #0b0f10;
+	color: #e2e3e3;
+}
+
+#mpd, #pulseaudio, #network, #cpu, #memory, #temperature, #backlight, #keyboard-state, #battery, #clock, #tray, #window, #disk {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+#workspaces button.active, button:hover {
+    color: #e2e3e3;
+}
+
+#workspaces button {
+    color: #4d5152;
+}

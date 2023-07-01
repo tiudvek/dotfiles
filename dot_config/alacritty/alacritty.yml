@@ -1,0 +1,53 @@
+env:
+  TERM: alacritty
+  LANG: "en_US.UTF-8"
+  LC_CTYPE: en_US.UTF-8
+window:
+  padding:
+    x: 10
+    y: 10
+    dynamic_padding: false
+startup_mode: maximized
+title: Alacritty
+font:
+  normal:
+    family: "monospace"
+    style: Regular
+  bold:
+    family: monospace
+    style: Bold
+  italic:
+    family: monospace
+    style: Italic
+  bold_italic:
+    family: monospace
+    style: Bold Italic
+  size: 11.0
+colors:
+  name: Brewer (dark)
+  author: Chris Kempson
+  primary:
+    background: "#0c0d0e"
+    foreground: "#b7b8b9"
+  cursor:
+    text: "#0c0d0e"
+    cursor: "#b7b8b9"
+  normal:
+    black: "#0c0d0e"
+    red: "#e31a1c"
+    green: "#31a354"
+    yellow: "#dca060"
+    blue: "#3182bd"
+    magenta: "#756bb1"
+    cyan: "#80b1d3"
+    white: "#b7b8b9"
+  bright:
+    black: "#737475"
+    red: "#e31a1c"
+    green: "#31a354"
+    yellow: "#dca060"
+    blue: "#3182bd"
+    magenta: "#756bb1"
+    cyan: "#80b1d3"
+    white: "#fcfdfe"
+theme: Brewer.dark
