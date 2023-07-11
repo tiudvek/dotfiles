@@ -11,12 +11,14 @@ vim.opt.smartindent = true
 
 lvim.leader = ","
 
-lvim.colorscheme = 'embark'
+lvim.colorscheme = 'enfocado'
+vim.g.enfocado_style = 'nature'
 
 -- Packages
 lvim.plugins = {
     {'embark-theme/vim', lazy = false},
-    'akinsho/toggleterm.nvim'
+    'akinsho/toggleterm.nvim',
+    {'wuelnerdotexe/vim-enfocado', lazy = false}
 }
 
 lvim.builtin.bufferline.active = false
@@ -35,8 +37,16 @@ lvim.builtin.treesitter.ensure_installed = {
 
 -- Formatters
 local formatters = require('lvim.lsp.null-ls.formatters')
-formatters.setup {{name = 'blue'}, {name = 'prettier'}}
+formatters.setup {{name = 'black'}}
+lvim.format_on_save.enabled = true
+lvim.format_on_save.pattern = { "*.py" }
 
 -- Linters
 local linters = require('lvim.lsp.null-ls.linters')
-linters.setup {{command = 'flake8', args = {"--ignore=E203"}}, {command = 'eslint'}}
+linters.setup {{command = 'flake8', args = {"--ignore=E203"}, filetypes={"python"}}}
+
+-- Neovide
+if vim.g.neovide then
+    vim.o.guifont = "monospace,Noto Emoji:h8.5"
+    vim.o.linespace = 0
+end

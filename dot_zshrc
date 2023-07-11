@@ -13,3 +13,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export EDITOR="lvim"
 
 source $ZSH/oh-my-zsh.sh
+export PATH=$PATH:/home/tiudvek/.spicetify

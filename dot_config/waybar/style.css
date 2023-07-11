@@ -18,10 +18,16 @@ window#waybar {
     margin-right: 16px;
 }
 
-#workspaces button.active, button:hover {
+#workspaces button {
+    background: transparent;
+    color: #4d5152;
+}
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
     color: #e2e3e3;
 }
 
-#workspaces button {
-    color: #4d5152;
+#workspaces button.active {
+	color: #e2e3e3;
 }

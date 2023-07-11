@@ -25,3 +25,12 @@ mkdir ~/.config # (If directory doesnt exist)
 cp -r dot_config/* ~/.config/
 cp dot_zsh ~/.zshrc
 ```
+
+## Spicetify
+For using spicetify, install spicetify, then run the following commands
+```sh
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wr /opt/spotify/Apps -R
+spicetify backup apply
+spicetify apply
+```
