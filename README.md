@@ -35,5 +35,5 @@ Then install the latest version of lunarvim. The lunarvim packages are
 2. flake8
 3. lua-language-server
 4. pyright
-<br
+<br>
 Then, it is now your problem to move all the files hehe
