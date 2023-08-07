@@ -29,7 +29,7 @@ wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 zsh
 nvm install node
 ```
-Then install the latest version of lunarvim. The lunarvim packages are
+Then install the latest version of lunarvim. The lunarvim mason packages are
 <br>
 1. black
 2. flake8
