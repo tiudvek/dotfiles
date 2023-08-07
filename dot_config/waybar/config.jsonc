@@ -1,97 +1,127 @@
 {
-	"position": "top",
-	"layer": "top",
-	"height": 16,
-	"margin-top": 5,
-	"margin-bottom": 0,
-	"margin-left": 5,
-	"margin-right": 5,
-	"modules-left": ["wlr/workspaces", "hyprland/window"],
-	"modules-center": [],
-	"modules-right": ["tray", "disk", "memory", "cpu","network", "pulseaudio", "backlight", "battery", "clock"],
-	"clock": {
-		"format": " {:%H:%M}",
-		"tooltip": "true",
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-		"format-alt": " {:%d/%m}"
-	},
-	"wlr/workspaces": {
-		"active-only": false,
-		"all-outputs": true,
-		"disable-scroll": false,
-		"on-scroll-up": "hyprctl dispatch workspace -1",
-		"on-scroll-down": "hyprctl dispatch workspace +1",
-		"format": "{icon}",
-		"on-click": "activate",
-		"format-icons": {
-			"urgent": "",
-			"active": "",
-			"default": "󰧞",
-			"sort-by-number": true
-		},
-	},
-	"battery": {
-		"states": {
-			"good": 95,
-			"warning": 30,
-			"critical": 15
-		},
-		"format":"{icon}  {capacity}%",
-		"format-charging": "{capacity}% ",
-		"format-plugged": "{capacity}% ",
-		"format-alt": "{icon} {time}",
-	"format-icons": ["", "", "", "", ""]
-	},
-	"memory": {
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 20,
+    "margin-left": 7,
+    "margin-right": 7,
+    "margin-top": 5,
+    "modules-left": [
+        "wlr/workspaces"
+    ],
+    "modules-center": [
+        "clock",
+	"tray",
+    ],
+    "modules-right": [
+        "cpu",
+	"memory",
+        "pulseaudio",
+        "backlight",
+        "temperature",
+        "custom/power_profile",
+        "battery",
+    ],
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰛐",
+            "deactivated": "󰛑"
+        },
+        "tooltip": true
+    },
+
+    "custom/power_btn": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
+        "tooltip": false
+    },
+
+    "custom/lock_screen": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.5s; swaylock)' & disown",
+        "tooltip": false
+    },
+
+    "wlr/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        }
+    },
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10,
+        "format-alt": " {usage}%",
+    },
+
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt-click": "click-right",
+        "format-alt": "{icon} {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}",
+        "format-muted": "",
+        "on-click": "~/.config/waybar/scripts/volume --toggle",
+        "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
+        "on-scroll-down": "~/.config/waybar/scripts/volume --dec",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "tooltip": true,
+        "tooltip-format": "{icon} at {volume}"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-alt-click": "click-right",
+        "format-alt": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
+        "on-scroll-down": "~/.config/waybar/scripts/brightness --dec"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "memory": {
 		"format": "󰍛 {}%",
 		"format-alt": "󰍛 {used}/{total} GiB",
 		"interval": 5
-	},
-	"cpu": {
-		"format": "󰻠 {usage}%",
-		"format-alt": "󰻠 {avg_frequency} GHz",
-		"interval": 5
-	},
-	"disk": {
-		"format": "󰋊 {}%",
-		"format-alt": "󰋊 {used}/{total} GiB",
-		"interval": 5,
-		"path": "/"
-	},
-	"network": {
-		"format-wifi": "󰤨",
-		"format-ethernet": "󰈀",
-		"format-linked": "",
-		"format-disconnected": "󰤭",
-	},
-	"tray": {
-		"icon-size": 16,
-		"spacing": 5
-	},
-	"backlight": {
-		"format": "{icon} {percent}%",
-		"format-icons": ["", "", "", "", "", "", "", "", ""],
-	},
-	"pulseaudio": {
-		"format": "{icon} {volume}%",
-		"format-muted": "󰝟",
-		"format-icons": {
-			"default": ["󰕿", "󰖀", "󰕾"]
-		},
-		"on-click": "bash ~/.scripts/volume mute",
-		"on-scroll-up": "bash ~/.scripts/volume up",
-		"on-scroll-down": "bash ~/.scripts/volume down",
-		"scroll-step": 5,
-		"on-click-right": "pavucontrol"
-	},
-	"custom/wf-recorder": {
-		"format": "{}",
-		"interval": "once",
-		"exec": "echo ''",
-		"tooltip": "false",
-		"exec-if": "pgrep 'wf-recorder'",
-		"on-click": "exec ./scripts/wlrecord.sh",
-		"signal": 8
-	}
-}
+    },
 }

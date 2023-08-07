@@ -1,36 +1,39 @@
-# Dotfiles
-My trash dotfiles, yes
+# My Dotfiles
+Yes
 
-## Dependencies
-Install the following packages, with something like paru or yay (ill probabbly miss something):
-```hyprland waybar-hyprland-git rofi-lbonn-wayland-git \
-    pipewire pipewire-pulse wireplumber pipewire-alsa \
-    bluez-utils-git bluez blueberry xdg-desktop-portal-hyprland \
-    azote brightnessctl wlogout ttf-jetbrains-mono-nerd \
-    ttf-liberation lib32-fontconfig 
-```
-After installing the dependencies, reboot
-
-### Zsh
-To use the zsh setup, install [Oh My Zsh](https://ohmyz.sh/), then, run the following command
+## Guide to install
+This is a guide I made mostly for me, because its supposed to recreate everything I want
+<br>
+First, install paru with the following commands
 ```sh
-git clone https://github.com/marlonrichert/zsh-autocomplete ~/.oh-my-zsh/custom/plugins/
-git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/
+sudo pacman -S git
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
 ```
-
-## Moving Files
-Run the following commands:
+Then, install the following packages with yay or paru
+```
+zsh pipewire pipewire-pulse wireplumber pipewire-alsa wayland hyprland waybar-hyprland-git
+xorg-xwayland mako polkit-kde-agent qt5-wayland xdg-desktop-portal-hyprland qt6-wayland
+firefox brightnessctl azote swaybg wl-clipboard grim slurp starship exa python-pip
+libnotify swaylock bluez bluez-utils blueberry python python-pynvim sddm
+(if installing vscode, install code and code-marketplace)
+```
+Afterwards, reboot then install rust
 ```sh
-mkdir ~/.config # (If directory doesnt exist)
-cp -r dot_config/* ~/.config/
-cp dot_zsh ~/.zshrc
+rustup default stable
 ```
-
-## Spicetify
-For using spicetify, install spicetify, then run the following commands
-```sh
-sudo chmod a+wr /opt/spotify
-sudo chmod a+wr /opt/spotify/Apps -R
-spicetify backup apply
-spicetify apply
+Then nvmsh, for node
 ```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+zsh
+nvm install node
+```
+Then install the latest version of lunarvim. The lunarvim packages are
+<br>
+1. black
+2. flake8
+3. lua-language-server
+4. pyright
+<br
+Then, it is now your problem to move all the files hehe

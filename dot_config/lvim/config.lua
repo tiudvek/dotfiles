@@ -8,23 +8,33 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
+vim.opt.cursorline = false
 
 lvim.leader = ","
-
-lvim.colorscheme = 'enfocado'
-vim.g.enfocado_style = 'nature'
+lvim.colorscheme = 'oxocarbon'
 
 -- Packages
 lvim.plugins = {
-    {'embark-theme/vim', lazy = false},
+    'embark-theme/vim',
     'akinsho/toggleterm.nvim',
-    {'wuelnerdotexe/vim-enfocado', lazy = false}
+    'nyoom-engineering/oxocarbon.nvim',
+    'olivercederborg/poimandres.nvim',
+    'norcalli/nvim-colorizer.lua',
 }
 
+-- Bufferline
 lvim.builtin.bufferline.active = false
+
+-- Colorizer
+require('colorizer').setup()
 
 -- Keybinds
 lvim.builtin.terminal.open_mapping = '<leader>t'
+---- Move with hjkl in insert mode
+lvim.keys.insert_mode['<A-h>'] = '<Left>'
+lvim.keys.insert_mode['<A-j>'] = '<Down>'
+lvim.keys.insert_mode['<A-k>'] = '<Up>'
+lvim.keys.insert_mode['<A-l>'] = '<Right>'
 
 -- Treesitter
 lvim.builtin.treesitter.ensure_installed = {
@@ -44,9 +54,3 @@ lvim.format_on_save.pattern = { "*.py" }
 -- Linters
 local linters = require('lvim.lsp.null-ls.linters')
 linters.setup {{command = 'flake8', args = {"--ignore=E203"}, filetypes={"python"}}}
-
--- Neovide
-if vim.g.neovide then
-    vim.o.guifont = "monospace,Noto Emoji:h8.5"
-    vim.o.linespace = 0
-end

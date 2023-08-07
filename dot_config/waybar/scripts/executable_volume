@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Get Volume
+get_volume() {
+	volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1)
+	echo "$volume"
+}
+
+# Increase Volume
+inc_volume() {
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
+}
+
+# Decrease Volume
+dec_volume() {
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
+}
+
+# Toggle Mute
+toggle_mute() {
+	if [ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: no" ]; then
+		pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "Volume Switched OFF"
+	elif [ "$(pactl get-sink-mute @DEFAULT_SINK@)" == "Mute: yes" ]; then
+		pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "Volume Switched ON"
+	fi
+}
+
+# Execute accordingly
+if [[ "$1" == "--get" ]]; then
+	get_volume
+elif [[ "$1" == "--inc" ]]; then
+	inc_volume
+elif [[ "$1" == "--dec" ]]; then
+	dec_volume
+elif [[ "$1" == "--toggle" ]]; then
+	toggle_mute
+else
+	get_volume
+fi
